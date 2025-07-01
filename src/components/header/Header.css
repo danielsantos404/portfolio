@@ -1,0 +1,39 @@
+.header {
+  font-size: small;
+  background-color: #1e1e1e;
+  width: 100%;
+
+  .header-nav ul {
+    padding: 0 20%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    list-style: none;
+    gap: 10%;
+  }
+
+  .header-nav li {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    padding: 1.2%;
+  }
+
+  .header-nav li:hover {
+    background-color: #333;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    .header-nav ul {
+      justify-content: space-between;
+      padding: 5% 0;
+      width: 100%;
+      gap: 0;
+    }
+  }
+}
