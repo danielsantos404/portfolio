@@ -4,21 +4,29 @@ import "./Home.css";
 function Home() {
   return (
     <>
-      <Header />
+      <Header
+        navItems={[
+          { label: "SOBRE", href: "/" },
+          { label: "PROJETOS", href: "/" },
+          { label: "TECNOLOGIAS", href: "/" },
+          { label: "CONTATO", href: "/" },
+        ]}
+      />
 
       <main className="home">
-        <section className="home__intro">
-          <h1>Bem-vindo ao meu portfólio!</h1>
-          <p>
-            Sou um desenvolvedor apaixonado por criar soluções inovadoras e
-            impactantes. Explore meus projetos e descubra como posso ajudar a
-            transformar suas ideias em realidade.
-          </p>
+
+        <section className="about">
         </section>
-        <section className="home__projects">
-          <h2>Projetos Recentes</h2>
-          {/* Aqui você pode adicionar uma lista de projetos */}
+
+        <section className="projects">
         </section>
+
+        <section className="technologies">
+        </section>
+
+        <section className="contact">
+        </section>
+        
       </main>
     </>
   );
