@@ -1,0 +1,29 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home .about {
+    width: 100%;
+    background-color: red;
+    padding: 50px;
+}
+
+.home .projects {
+    width: 100%;
+    background-color: blue;
+    padding: 50px;
+}
+
+.home .technologies {
+    width: 100%;
+    background-color: green;
+    padding: 50px;
+}
+
+.home .contact {
+    width: 100%;
+    background-color: yellow;
+    padding: 50px;
+}
