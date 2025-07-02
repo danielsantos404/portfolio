@@ -1,6 +1,6 @@
 .header {
   font-size: small;
-  background-color: #1e1e1e;
+  background-color: var(--pri-gray);
   width: 100%;
 
   .header-nav ul {
@@ -20,11 +20,11 @@
   }
 
   .header-nav li:hover {
-    background-color: #333;
+    background-color: var(--sec-gray);
   }
 
   a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
   }
 
