@@ -5,6 +5,8 @@ import myPic from "../../assets/myPic.png";
 import uninassauIcon from "../../assets/uninassauIcon.png";
 import softexIcon from "../../assets/softexIcon.png";
 import cesarIcon from "../../assets/cesarIcon.png";
+import Button from "../../components/button/Button";
+import wppIcon from "../../assets/wppIcon.svg";
 
 function Home() {
   return (
@@ -54,7 +56,8 @@ function Home() {
               <div className="education-content">
                 <Icon src={cesarIcon} alt="ícone de educação" />
                 <p>
-                  <span>Formação Acelereda em Soluções de Techdesign</span> <br />
+                  <span>Formação Acelereda em Soluções de Techdesign</span>{" "}
+                  <br />
                   Cesar School - Setembro 2024 / Novembro 2024
                 </p>
               </div>
@@ -62,7 +65,9 @@ function Home() {
           </div>
         </section>
 
-        <section className="projects"></section>
+        <section className="projects">
+          <Button text="TODOS OS PROJETOS" showArrow={true} />
+        </section>
 
         <section className="technologies"></section>
 
