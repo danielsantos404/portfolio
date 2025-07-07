@@ -5,8 +5,7 @@ import myPic from "../../assets/myPic.png";
 import uninassauIcon from "../../assets/uninassauIcon.png";
 import softexIcon from "../../assets/softexIcon.png";
 import cesarIcon from "../../assets/cesarIcon.png";
-import Button from "../../components/button/Button";
-import wppIcon from "../../assets/wppIcon.svg";
+import Card from "../../components/card/Card";
 
 function Home() {
   return (
@@ -66,7 +65,7 @@ function Home() {
         </section>
 
         <section className="projects">
-          <Button text="TODOS OS PROJETOS" showArrow={true} />
+          <Card />
         </section>
 
         <section className="technologies"></section>
