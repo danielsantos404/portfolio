@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.card .card-title {
+  color: var(--black);
+}
+
+.card .card-content {
+  border: 1.8px solid var(--pri-gray);
+  border-radius: 20px;
+  height: 320px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .card-img-container {
+  height: 75%;
+  border-radius: 20px 20px 0 0;
+  background-image: url("https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card .card-icons-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  background-color: var(--pri-gray);
+  height: 100%;
+}
+
+.card .card-btt-container {
+  background-color: green;
+  height: 35%;
+  border-radius: 0 0 20px 20px;
+}
+
+.card .card-btt-container button {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 20px 20px;
+  background-color: var(--white);
+  color: var(--black);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s background;
+}
+
+.card .card-btt-container button:hover {
+  background-color: var(--sec-gray);
+}
