@@ -5,7 +5,7 @@ import myPic from "../../assets/myPic.png";
 import uninassauIcon from "../../assets/uninassauIcon.png";
 import softexIcon from "../../assets/softexIcon.png";
 import cesarIcon from "../../assets/cesarIcon.png";
-import Card from "../../components/card/Card";
+import Carousel from "../../components/carousel/Carousel";
 
 function Home() {
   return (
@@ -65,7 +65,7 @@ function Home() {
         </section>
 
         <section className="projects">
-          <Card />
+          <Carousel></Carousel>
         </section>
 
         <section className="technologies"></section>
