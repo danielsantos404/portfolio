@@ -80,7 +80,6 @@ export default function CustomCarousel() {
       sliderClass=""
       slidesToSlide={1}
       swipeable
-      cursor="pointer"
     >
       {cardsData.map((card, idx) => (
         <Card

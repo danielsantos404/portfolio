@@ -6,6 +6,7 @@ import uninassauIcon from "../../assets/uninassauIcon.png";
 import softexIcon from "../../assets/softexIcon.png";
 import cesarIcon from "../../assets/cesarIcon.png";
 import Carousel from "../../components/carousel/Carousel";
+import Button from "../../components/button/Button";
 
 function Home() {
   return (
@@ -65,7 +66,9 @@ function Home() {
         </section>
 
         <section className="projects">
-          <Carousel></Carousel>
+          <h1 className="sec-title">PROJETOS</h1>
+          <Carousel />
+          <Button text={"TODOS OS PROJETOS"} showArrow={true} />
         </section>
 
         <section className="technologies"></section>
