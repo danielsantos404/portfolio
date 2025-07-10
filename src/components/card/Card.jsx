@@ -9,14 +9,14 @@ function Card() {
       <div className="card-content">
         <div className="card-img-container"></div>
         <div className="card-icons-container">
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
-          <Icon src={cesarIcon} />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
+          <Icon src={cesarIcon} bgColor="var(--white)" />
         </div>
         <div className="card-btt-container">
           <button className="card-button">VER MAIS</button>

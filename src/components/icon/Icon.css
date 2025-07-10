@@ -1,7 +1,6 @@
 .icon-container {
   width: 42px;
   height: 42px;
-  background: var(--white);
   border-radius: 8px;
   display: flex;
   align-items: center;
