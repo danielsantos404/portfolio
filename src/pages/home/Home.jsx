@@ -13,15 +13,15 @@ function Home() {
     <>
       <Header
         navItems={[
-          { label: "SOBRE", href: "/" },
-          { label: "PROJETOS", href: "/" },
-          { label: "TECNOLOGIAS", href: "/" },
-          { label: "CONTATO", href: "/" },
+          { label: "SOBRE", href: "#about" },
+          { label: "PROJETOS", href: "#projects" },
+          { label: "TECNOLOGIAS", href: "#technologies" },
+          { label: "CONTATO", href: "#contact" },
         ]}
       />
 
       <main className="home">
-        <section className="about">
+        <section className="about" id="about">
           <div className="left-container">
             <img src={myPic} alt="" />
           </div>
@@ -65,13 +65,13 @@ function Home() {
           </div>
         </section>
 
-        <section className="projects">
+        <section className="projects" id="projects">
           <h1 className="sec-title">PROJETOS</h1>
           <Carousel />
           <Button text={"TODOS OS PROJETOS"} showArrow={true} />
         </section>
 
-        <section className="technologies">
+        <section className="technologies" id="technologies">
           <h1 className="sec-title">TECNOLOGIAS</h1>
           <div className="tec-icon-container">
             <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
@@ -89,7 +89,9 @@ function Home() {
           </div>
         </section>
 
-        <section className="contact"></section>
+        <section className="contact" id="contact">
+
+        </section>
       </main>
     </>
   );
