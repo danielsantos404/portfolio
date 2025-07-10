@@ -8,7 +8,7 @@
   border-radius: 16px;
   color: var(--white);
   padding: 1.5% 3% 1.3%;
-  margin: 0 25vw;
+  /* margin: 0 25vw; */
   background: var(--pri-gray);
   display: flex;
   transition: 0.2s background;

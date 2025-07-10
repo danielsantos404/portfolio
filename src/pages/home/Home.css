@@ -64,6 +64,11 @@
   gap: 60px;
 }
 
+.home .projects .btn {
+  margin: 0 25vw;
+  padding: 2%;
+}
+
 .home .technologies {
   display: flex;
   flex-direction: column;
@@ -83,7 +88,60 @@
 }
 
 .home .contact {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
-  background-color: yellow;
-  padding: 50px;
+  background-color: var(--white);
+  padding: 60px 15%;
+  gap: 2vh;
+}
+
+.home .contact .btn {
+  margin: 0 22vw;
+}
+
+.home .contact .contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--pri-gray);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.home .contact .contact-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10vw;
+  gap: 16px;
+}
+
+.home .contact .contact-form form input, textarea{
+  padding: 2%;
+  border-radius: 16px;
+  border: none;
+  resize: none;
+}
+
+.home .contact #wppBtn:hover {
+  background-color: rgb(37, 211, 102);
+}
+
+.home .contact #linkedinBtn:hover {
+  background-color: rgb(14, 118, 168);
+  
+}
+
+.home .contact .contact-form form .btn {
+  margin: 0 18vw;
+  padding: 2%;
+  background-color: white;
+  color: var(--black);
+}
+
+.home .contact .contact-form form .btn:hover {
+  background-color: var(--ter-gray);
 }

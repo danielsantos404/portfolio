@@ -1,4 +1,5 @@
 import "./Home.css";
+import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
 import myPic from "../../assets/myPic.png";
@@ -7,6 +8,8 @@ import softexIcon from "../../assets/softexIcon.png";
 import cesarIcon from "../../assets/cesarIcon.png";
 import Carousel from "../../components/carousel/Carousel";
 import Button from "../../components/button/Button";
+import wppIcon from "../../assets/wppIcon.svg";
+import linkedinIcon from "../../assets/linkedinIcon.svg";
 
 function Home() {
   return (
@@ -90,7 +93,28 @@ function Home() {
         </section>
 
         <section className="contact" id="contact">
+          <h1 className="sec-title">CONTATO</h1>
 
+          <Button imgUrl={wppIcon} text={"WhatsApp"} id={"wppBtn"} />
+          <Button imgUrl={linkedinIcon} text={"LinkedIn"} id={"linkedinBtn"} />
+          
+
+          <p style={{ color: "var(--black)", fontWeight: "bold" }}>OU</p>
+
+          <div className="contact-form">
+            <h1>MANDE UM E-MAIL</h1>
+            <form>
+              <input type="text" placeholder="Digite seu nome" required />
+              <input type="email" placeholder="Digite seu e-mail" required />
+              <input type="subject" placeholder="Informe o assunto" required />
+              <textarea
+                placeholder="Escreva sua mensagem com detalhes"
+                rows="5"
+                required
+              ></textarea>
+              <Button text={"ENVIAR"} />
+            </form>
+          </div>
         </section>
       </main>
     </>

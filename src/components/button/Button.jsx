@@ -1,8 +1,8 @@
 import "./Button.css";
 
-function Button({ text, imgUrl, altText, showArrow }) {
+function Button({ text, imgUrl, altText, showArrow, id }) {
   return (
-    <button className="btn">
+    <button className="btn" id={id} >
       {imgUrl && <img src={imgUrl} alt={altText || "ícone"} />}
       {text}
       {showArrow && (
