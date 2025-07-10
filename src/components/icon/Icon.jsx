@@ -1,9 +1,10 @@
 import "./Icon.css";
 
-function Icon({ src, alt = "ícone", bgColor = "var(--white)" }) {
+function Icon({ src, alt = "ícone", bgColor = "var(--white)", size = "small" }) {
+  const sizeClass = size === "large" ? "icon-large" : "icon-small";
   return (
     <div
-      className="icon-container"
+      className={`icon-container ${sizeClass}`}
       title="Teste"
       style={{ background: bgColor }}
     >

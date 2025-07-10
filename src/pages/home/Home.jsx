@@ -74,18 +74,18 @@ function Home() {
         <section className="technologies">
           <h1 className="sec-title">TECNOLOGIAS</h1>
           <div className="tec-icon-container">
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
-            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" size="large" />
           </div>
         </section>
 
