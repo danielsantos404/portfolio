@@ -69,15 +69,17 @@
   flex-direction: column;
   text-align: center;
   width: 100%;
-  background-color: green;
+  background-color: var(--white);
   padding: 60px 15%;
+  gap: 60px;
 }
 
 .home .technologies .tec-icon-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  gap: 20px;
   justify-items: center;
+  margin: 0 auto;
 }
 
 .home .contact {
