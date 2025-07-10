@@ -65,9 +65,19 @@
 }
 
 .home .technologies {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
   background-color: green;
-  padding: 50px;
+  padding: 60px 15%;
+}
+
+.home .technologies .tec-icon-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  justify-items: center;
 }
 
 .home .contact {

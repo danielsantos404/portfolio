@@ -71,7 +71,23 @@ function Home() {
           <Button text={"TODOS OS PROJETOS"} showArrow={true} />
         </section>
 
-        <section className="technologies"></section>
+        <section className="technologies">
+          <h1 className="sec-title">TECNOLOGIAS</h1>
+          <div className="tec-icon-container">
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+            <Icon src={cesarIcon} bgColor="var(--pri-gray)" />
+          </div>
+        </section>
 
         <section className="contact"></section>
       </main>
