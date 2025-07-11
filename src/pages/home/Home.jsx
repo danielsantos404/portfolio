@@ -70,7 +70,9 @@ function Home() {
 
         <section className="projects" id="projects">
           <h1 className="sec-title">PROJETOS</h1>
-          <Carousel />
+          <div className="carousel-container">
+            <Carousel />
+          </div>
           <Button text={"TODOS OS PROJETOS"} showArrow={true} />
         </section>
 
