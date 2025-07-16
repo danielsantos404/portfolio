@@ -99,7 +99,6 @@ function Home() {
 
           <Button imgUrl={wppIcon} text={"WhatsApp"} id={"wppBtn"} />
           <Button imgUrl={linkedinIcon} text={"LinkedIn"} id={"linkedinBtn"} />
-          
 
           <p style={{ color: "var(--black)", fontWeight: "bold" }}>OU</p>
 
