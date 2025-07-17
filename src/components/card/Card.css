@@ -63,7 +63,7 @@
   background-color: var(--ter-gray);
 }
 
-@media (max-width: 464px) {
+@media (max-width: 1000px) {
   .card .card-content {
     height: 320px;
     width: 180px;

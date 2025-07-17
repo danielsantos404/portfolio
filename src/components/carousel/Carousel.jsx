@@ -49,7 +49,7 @@ const responsive = {
     partialVisibilityGutter: 30,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 790, min: 0 },
     items: 1,
     partialVisibilityGutter: 20,
   },

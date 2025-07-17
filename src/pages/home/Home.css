@@ -164,6 +164,18 @@ textarea {
   background-color: var(--ter-gray);
 }
 
+@media (max-width: 1366px) {
+  .home .technologies .tec-icon-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .home .projects {
+    padding: 8vh 0;
+  }
+}
+
 @media (max-width: 464px) {
   .home .about {
     width: 100vw;

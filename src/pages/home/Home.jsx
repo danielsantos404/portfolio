@@ -49,7 +49,7 @@ function Home() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Molestiae itaque voluptas minima, quibusdam necessitatibus
                 tempore unde nostrum. Dicta reprehenderit, necessitatibus eaque
-                sunt, omnis, voluptatem nostrum atque assumenda mollitia
+                sunt, omnis, voluptatem nxostrum atque assumenda mollitia
                 repudiandae ex.
               </p>
             </div>
