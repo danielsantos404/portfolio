@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import "./Carousel.css";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import Card from "../card/Card";
 
-// Exemplo de dados para os cards (substitua pelos seus dados reais)
 const cardsData = [
   {
     title: "Projeto 1",
@@ -41,21 +41,29 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1366 },
     items: 3,
-    partialVisibilityGutter: 30,
+    partialVisibilityGutter: 40,
   },
   tablet: {
     breakpoint: { max: 1366, min: 464 },
     items: 2,
-    partialVisibilityGutter: 20,
+    partialVisibilityGutter: 30,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    partialVisibilityGutter: 10,
+    partialVisibilityGutter: 20,
   },
 };
 
 export default function CustomCarousel() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 464);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 464);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="carousel-wrapper">
       <div className="carousel-shadow left" />
@@ -84,7 +92,7 @@ export default function CustomCarousel() {
         rewindWithAnimation={false}
         rtl={false}
         shouldResetAutoplay
-        showDots={true}
+        showDots={!isMobile}
         sliderClass=""
         slidesToSlide={1}
         swipeable

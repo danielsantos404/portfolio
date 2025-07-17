@@ -62,3 +62,10 @@
 .card .card-btt-container button:hover {
   background-color: var(--ter-gray);
 }
+
+@media (max-width: 464px) {
+  .card .card-content {
+    height: 320px;
+    width: 180px;
+  }
+}
