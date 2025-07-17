@@ -23,6 +23,10 @@
   object-fit: contain;
 }
 
+.btn:active {
+  transform: translateY(-1px);
+}
+
 .btn:hover {
   background-color: var(--sec-gray);
 }
