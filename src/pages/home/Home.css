@@ -225,4 +225,32 @@ textarea {
   .home .technologies .tec-icon-container {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .home .contact .btn {
+    margin: 0 10vw;
+    padding: 4%;
+  }
+
+  .home .contact .contact-form {
+    padding: 4vh 0;
+    margin: 0;
+  }
+
+  .home .contact .contact-form form {
+    width: 100%;
+    padding: 0 6vw;
+    gap: 2vh;
+  }
+
+  .home .contact .contact-form form input,
+  textarea {
+    padding: 4%;
+    border-radius: 8px;
+  }
+
+  .home .contact .contact-form form .btn {
+    margin: 0 11vw;
+    padding: 4%;
+    border-radius: 12px;
+  }
 }
