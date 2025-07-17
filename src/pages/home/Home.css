@@ -164,6 +164,10 @@ textarea {
     padding: 0;
   }
 
+  .home .sec-title {
+  font-size: 2rem;
+}
+
   .home .about .left-container {
     width: 35%;
   }
@@ -178,6 +182,10 @@ textarea {
 
   .home .about .right-container .text-container p {
     font-size: small;
+  }
+
+  .home .about .right-container .education-container .education-content {
+    margin-right: 6vw;
   }
 
   .home .about .right-container .education-container .education-content .education-infos {

@@ -55,7 +55,9 @@ function Home() {
             </div>
             <div className="education-container">
               <div className="education-content">
-                <Icon src={uninassauIcon} alt="ícone de educação" />
+                <div className="education-icon">
+                  <Icon src={uninassauIcon} alt="ícone de educação" />
+                </div>
                 <div className="education-infos">
                   <h5>Análise e Desenvolvimento de Sistemas</h5>
                   <p>Uninassau</p>
@@ -63,7 +65,9 @@ function Home() {
               </div>
 
               <div className="education-content">
-                <Icon src={softexIcon} alt="ícone de educação" />
+                <div className="education-icon">
+                  <Icon src={softexIcon} alt="ícone de educação" />
+                </div>
                 <div className="education-infos">
                   <h5>Formação Acelerada em Programação</h5>
                   <p>Softex Pernambuco</p>
@@ -71,7 +75,9 @@ function Home() {
               </div>
 
               <div className="education-content">
-                <Icon src={cesarIcon} alt="ícone de educação" />
+                <div className="education-icon">
+                  <Icon src={cesarIcon} alt="ícone de educação" />
+                </div>
                 <div className="education-infos">
                   <h5>Formação Acelereda em Soluções de Techdesign</h5>
                   <p>Cesar School</p>
