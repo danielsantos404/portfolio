@@ -23,6 +23,9 @@
   justify-content: flex-end;
   padding-right: 5vw;
   width: 45%;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .home .about .right-container {
@@ -50,12 +53,13 @@
 .home .about .right-container .education-container .education-content {
   display: flex;
   flex-direction: row;
+  align-items: center;
   font-size: small;
   gap: 1%;
 }
 
-.home .about .right-container .education-container .education-content span {
-  font-size: large;
+.home .about .right-container .education-container .education-content .education-infos h5 {
+  font-size: medium;
 }
 
 .home .projects {
@@ -152,4 +156,39 @@ textarea {
 
 .home .contact .contact-form form .btn:hover {
   background-color: var(--ter-gray);
+}
+
+@media (max-width: 464px) {
+  .home .about {
+    width: 100vw;
+    padding: 0;
+  }
+
+  .home .about .left-container {
+    width: 35%;
+  }
+
+  .home .about .right-container {
+    width: 65%;
+  }
+
+  .home .about .right-container .text-container h1 {
+    font-size: 150%;
+  }
+
+  .home .about .right-container .text-container p {
+    font-size: small;
+  }
+
+  .home .about .right-container .education-container .education-content .education-infos {
+    font-size: 10px;
+  }
+
+  .home .about .right-container .education-container .education-content .education-infos h5 {
+    font-size: 11px;
+  }
+
+  .home .technologies .tec-icon-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

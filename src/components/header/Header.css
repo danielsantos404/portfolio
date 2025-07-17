@@ -32,11 +32,29 @@ a {
   text-decoration: none;
 }
 
-@media (max-width: 480px) {
-  .header-nav ul {
-    justify-content: space-between;
-    padding: 5% 0;
-    width: 100%;
-    gap: 0;
+@media (max-width: 464px) {
+  .header {
+    font-size: xx-small;
   }
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-nav ul {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 5% 0;
+  width: 100%;
+  gap: 0;
+}
+
+  .header-nav li {
+    padding: 0;
+    margin: auto;
+    
+  }
+
 }
