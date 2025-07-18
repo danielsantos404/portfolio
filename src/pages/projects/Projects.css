@@ -1,0 +1,24 @@
+.all-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-projects h1 {
+  color: var(--black);
+  font-size: 2.5rem;
+}
+
+.all-projects .projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  justify-items: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 464px) {
+  .all-projects .projects-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
