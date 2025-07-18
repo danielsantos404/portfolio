@@ -10,7 +10,11 @@ function Header({ navItems }) {
       <nav className="header-nav">
         <ul>
           {navItems.map((item, idx) => (
-            <li key={idx} onClick={() => handleNavClick(item.href)} className="nav-item">
+            <li
+              key={idx}
+              onClick={() => handleNavClick(item.href)}
+              className="nav-item"
+            >
               {item.label}
             </li>
           ))}
@@ -19,6 +23,5 @@ function Header({ navItems }) {
     </header>
   );
 }
-
 
 export default Header;

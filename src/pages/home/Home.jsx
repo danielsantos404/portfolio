@@ -1,5 +1,6 @@
 import "./Home.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
 import myPic from "../../assets/myPic.png";
@@ -22,6 +23,12 @@ function Home() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleNavigateProjects = () => {
+    navigate("/projects");
+  };
 
   return (
     <>
@@ -92,7 +99,7 @@ function Home() {
           <div className="carousel-container">
             <Carousel />
           </div>
-          <Button text={"TODOS OS PROJETOS"} showArrow={true} />
+          <Button text={"TODOS OS PROJETOS"} showArrow={true} onClick={handleNavigateProjects} />
         </section>
 
         <section className="technologies" id="technologies">
