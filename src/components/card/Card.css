@@ -10,7 +10,7 @@
 }
 
 .card .card-content {
-  border: 1px solid var(--pri-gray);
+  /* border: 1px solid var(--pri-gray); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
