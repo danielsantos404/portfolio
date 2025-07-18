@@ -21,15 +21,11 @@
   cursor: pointer;
   padding: 1.2%;
   transition: 0.2s background;
+  color: var(--white);
 }
 
 .header-nav li:hover {
   background-color: var(--sec-gray);
-}
-
-a {
-  color: var(--white);
-  text-decoration: none;
 }
 
 @media (max-width: 464px) {

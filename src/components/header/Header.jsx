@@ -1,13 +1,17 @@
 import "./Header.css";
 
 function Header({ navItems }) {
+  const handleNavClick = (href) => {
+    window.location.href = href;
+  };
+
   return (
     <header className="header">
       <nav className="header-nav">
         <ul>
           {navItems.map((item, idx) => (
-            <li key={idx}>
-              <a href={item.href}>{item.label}</a>
+            <li key={idx} onClick={() => handleNavClick(item.href)} className="nav-item">
+              {item.label}
             </li>
           ))}
         </ul>
@@ -15,5 +19,6 @@ function Header({ navItems }) {
     </header>
   );
 }
+
 
 export default Header;
