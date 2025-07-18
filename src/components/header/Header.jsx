@@ -1,8 +1,19 @@
 import "./Header.css";
+import { useNavigate } from "react-router-dom";
 
 function Header({ navItems }) {
+  const navigate = useNavigate();
+
   const handleNavClick = (href) => {
-    window.location.href = href;
+    if (href.startsWith("#")) {
+      const targetId = href.slice(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -10,11 +21,7 @@ function Header({ navItems }) {
       <nav className="header-nav">
         <ul>
           {navItems.map((item, idx) => (
-            <li
-              key={idx}
-              onClick={() => handleNavClick(item.href)}
-              className="nav-item"
-            >
+            <li key={idx} onClick={() => handleNavClick(item.href)}>
               {item.label}
             </li>
           ))}

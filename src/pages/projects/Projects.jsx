@@ -1,10 +1,10 @@
-import Header from "../../components/header/Header";
 import "./Projects.css";
+import Header from "../../components/header/Header";
 
 function Projects() {
   return (
     <>
-      <Header navItems={[{ label: "VOLTAR", href: "#about" }]} />
+      <Header navItems={[{ label: "VOLTAR", href: "/" }]} />
       <main className="all-projects">
 
       </main>
