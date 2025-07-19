@@ -13,6 +13,10 @@ import wppIcon from "../../assets/wppIcon.svg";
 import linkedinIcon from "../../assets/linkedinIcon.svg";
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 464);
 
   useEffect(() => {
@@ -99,7 +103,11 @@ function Home() {
           <div className="carousel-container">
             <Carousel />
           </div>
-          <Button text={"TODOS OS PROJETOS"} showArrow={true} onClick={handleNavigateProjects} />
+          <Button
+            text={"TODOS OS PROJETOS"}
+            showArrow={true}
+            onClick={handleNavigateProjects}
+          />
         </section>
 
         <section className="technologies" id="technologies">
