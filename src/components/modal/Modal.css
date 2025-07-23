@@ -23,12 +23,20 @@
 
 .modal-overlay .modal-container .modal-close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
+  top: 0;
+  right: 0;
+  width: 7%;
+  height: 7%;
   border: none;
-  font-size: 1.2rem;
+  border-radius: 0 20px 0 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
   cursor: pointer;
+  background-color: var(--pri-red);
+}
+
+.modal-overlay .modal-container .modal-close:hover {
+  background-color: var(--sec-red);
 }
 
 .modal-overlay .modal-container .modal-content {
