@@ -34,6 +34,13 @@ function Home() {
     navigate("/projects");
   };
 
+  const openSecureLink = (url) => {
+    const newWindow = window.open(url, "_blank");
+    if (newWindow) {
+      newWindow.opener = null;
+    }
+  };
+
   return (
     <>
       <Header
@@ -179,8 +186,20 @@ function Home() {
         <section className="contact" id="contact">
           <h1 className="sec-title">CONTATO</h1>
 
-          <Button imgUrl={wppIcon} text={"WhatsApp"} id={"wppBtn"} />
-          <Button imgUrl={linkedinIcon} text={"LinkedIn"} id={"linkedinBtn"} />
+          <Button
+            imgUrl={wppIcon}
+            text={"WhatsApp"}
+            id={"wppBtn"}
+            onClick={() => openSecureLink("https://wa.me/5581998051299")}
+          />
+          <Button
+            imgUrl={linkedinIcon}
+            text={"LinkedIn"}
+            id={"linkedinBtn"}
+            onClick={() =>
+              openSecureLink("https://www.linkedin.com/in/daniel-fsantos/")
+            }
+          />
 
           <p style={{ color: "var(--black)", fontWeight: "bold" }}>OU</p>
 
