@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .modal-overlay .modal-container {
@@ -18,7 +18,7 @@
   max-width: 500px;
   width: 90%;
   position: relative;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .modal-overlay .modal-container .modal-close {
@@ -39,11 +39,8 @@
   background-color: var(--sec-red);
 }
 
-.modal-overlay .modal-container .modal-content {
-}
-
 .modal-overlay .modal-container .modal-content .modal-img-container {
-  height: 75px;
+  height: 25vh;
   border-radius: 20px 20px 0 0;
   background-image: url("https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg");
   background-size: cover;
@@ -54,13 +51,18 @@
 .modal-overlay .modal-container .modal-content .modal-text-container {
   padding: 5% 15%;
   text-align: center;
+  font-size: 70%;
+}
+
+.modal-overlay .modal-container .modal-content .modal-text-container p {
+  text-align: justify;
 }
 
 .modal-overlay .modal-container .modal-content .modal-icon-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 5% 15%;
-  gap: 10px;
+  padding: 0 25% 5%;
+  gap: 10%;
   justify-items: center;
   margin: 0 auto;
 }
