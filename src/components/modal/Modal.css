@@ -28,7 +28,7 @@
   width: 7%;
   height: 7%;
   border: none;
-  border-radius: 0 20px 0 10px;
+  border-radius: 0 20px 0 8px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
   cursor: pointer;
@@ -63,8 +63,8 @@
   grid-template-columns: repeat(4, 1fr);
   padding: 0 25% 5%;
   gap: 10%;
-  justify-items: center;
-  margin: 0 auto;
+  justify-content: center;
+  margin: auto;
 }
 
 .modal-overlay .modal-container .modal-content .modal-btt-container {
@@ -85,8 +85,12 @@
   transition: 0.2s background;
 }
 
-.modal-overlay .modal-container .modal-content .modal-btt-container button:hover {
-    background-color: var(--ter-gray);
+.modal-overlay
+  .modal-container
+  .modal-content
+  .modal-btt-container
+  button:hover {
+  background-color: var(--ter-gray);
 }
 
 .modal-overlay
