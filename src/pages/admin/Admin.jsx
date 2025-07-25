@@ -1,7 +1,13 @@
 import "./Admin.css";
+import { useState } from "react";
 import Button from "../../components/button/Button";
+import ProjectForm from "./components/project-form/ProjectForm";
+import TechnologyForm from "./components/technology-form/TechnologyForm";
 
 function Admin() {
+  const [isProjectModalOpen, setProjectModalOpen] = useState(false);
+  const [isTechnologyModalOpen, setTechnologyModalOpen] = useState(false);
+
   return (
     <>
       <main className="admin">
@@ -14,7 +20,14 @@ function Admin() {
             <p>NOME DO PROJETO</p>
           </div>
           <div className="add-button-container">
-            <Button text={"ADICIONAR"} />
+            <Button
+              text={"ADICIONAR"}
+              onClick={() => setProjectModalOpen(true)}
+            />
+            <ProjectForm
+              isOpen={isProjectModalOpen}
+              onClose={() => setProjectModalOpen(false)}
+            />
           </div>
         </section>
 
@@ -29,7 +42,14 @@ function Admin() {
             <p>NOME DA TECNOLOGIA</p>
           </div>
           <div className="add-button-container">
-            <Button text={"ADICIONAR"} />
+            <Button
+              text={"ADICIONAR"}
+              onClick={() => setTechnologyModalOpen(true)}
+            />
+            <TechnologyForm
+              isOpen={isTechnologyModalOpen}
+              onClose={() => setTechnologyModalOpen(false)}
+            />
           </div>
         </section>
       </main>

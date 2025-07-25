@@ -1,0 +1,4 @@
+.modal-overlay .modal-container form {
+    display: flex;
+    flex-direction: column;
+}
