@@ -1,0 +1,36 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5%;
+  gap: 10px;
+}
+
+.admin .project-list,
+.technology-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1% 20%;
+  gap: 10px;
+}
+
+.admin .project-list .project-container,
+.technology-list .technology-container {
+  text-align: left;
+  background-color: var(--white);
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.5% 2%;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.24);
+}
+
+.admin .project-list .add-button-container,
+.technology-list .add-button-container {
+  display: flex;
+  justify-content: right;
+}
+
+.admin .project-list button,
+.technology-list button {
+  width: 15%;
+}
