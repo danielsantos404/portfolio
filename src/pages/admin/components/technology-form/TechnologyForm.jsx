@@ -27,7 +27,7 @@ function TechnologyForm({ isOpen, onClose }) {
             name="TechnologyName"
             required
           />
-          <div>
+          <div className="buttonContainer">
             <button>Deletar</button>
             <button type="submit">Salvar</button>
           </div>

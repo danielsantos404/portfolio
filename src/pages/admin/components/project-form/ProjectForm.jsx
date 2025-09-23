@@ -45,7 +45,7 @@ function ProjectForm({ isOpen, onClose }) {
             type="url"
             name="projectDeploy"
           />
-          <div>
+          <div className="buttonContainer">
             <button>Deletar</button>
             <button type="submit">Salvar</button>
           </div>
