@@ -5,6 +5,10 @@
     gap: 8px;
 }
 
+.modal-overlay .modal-container .modal-close {
+    height: 30px;
+}
+
 .modal-overlay .modal-container form input {
     border-radius: 16px;
     padding: 2%;

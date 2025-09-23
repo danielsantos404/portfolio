@@ -1,7 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProjectForm.css";
+import Select from "react-select";
+
+const techOptions = [
+  { value: "react", label: "React" },
+  { value: "javascript", label: "JavaScript" },
+  { value: "firebase", label: "Firebase" },
+  { value: "css", label: "CSS3" },
+  { value: "html", label: "HTML5" },
+  { value: "nodejs", label: "Node.js" },
+  { value: "typescript", label: "TypeScript" },
+];
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: "1px dotted silver",
+    color: state.isSelected ? "white" : "var(--black)",
+    backgroundColor: state.isSelected
+      ? "#007bff"
+      : state.isFocused
+      ? "var(--ter-gray)"
+      : "white",
+    padding: 15,
+  }),
+  control: (provided) => ({
+    ...provided,
+    borderColor: "#ccc",
+    boxShadow: "none",
+    borderRadius: "16px",
+  }),
+  multiValue: (styles) => ({
+    ...styles,
+    backgroundColor: "var(--ter-gray)",
+    borderRadius: "16px",
+  }),
+  multiValueLabel: (styles) => ({ ...styles, color: "var(--black)" }),
+  multiValueRemove: (styles) => ({
+    ...styles,
+    color: "var(--black)",
+    borderRadius: "0 16px 16px 0",
+    ":hover": { backgroundColor: "var(--pri-red)", color: "white" },
+  }),
+};
 
 function ProjectForm({ isOpen, onClose }) {
+  const [selectedTechs, setSelectedTechs] = useState([]);
+
   if (!isOpen) return null;
 
   return (
@@ -28,11 +73,16 @@ function ProjectForm({ isOpen, onClose }) {
             rows={4}
             required
           />
-          <input
-            placeholder="Tecnologias do projeto (separadas por vírgula)"
-            type="text"
-            name="projectTechnologies"
-            required
+          <Select
+            isMulti
+            name="techs"
+            options={techOptions}
+            styles={customStyles}
+            className="techs-multi-select"
+            classNamePrefix="select"
+            placeholder="Selecione as tecnologias..."
+            onChange={setSelectedTechs}
+            value={selectedTechs}
           />
           <input
             placeholder="URL do repositório do projeto"
