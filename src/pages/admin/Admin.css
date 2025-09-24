@@ -34,3 +34,40 @@
 .technology-list button {
   width: 20%;
 }
+
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-modal {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  padding: 25vh 10vw;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  text-align: center;
+  max-width: 90vw;
+  gap: 6vh;
+}
+
+.admin-modal button {
+  height: 6vh;
+  background-color: var(--white);
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+
+.admin-modal button:hover {
+  background-color: var(--ter-gray);
+}
