@@ -6,7 +6,11 @@ import TechnologyForm from "./components/technology-form/TechnologyForm";
 import githubIcon from "../../assets/githubIcon.svg";
 
 // Importações do Firebase
-import { onAuthStateChanged, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  GithubAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase"; // Verifique se o caminho está correto
 
 function Admin() {
@@ -71,6 +75,9 @@ function Admin() {
       ) : (
         // Se HOUVER um usuário, mostra o painel de admin
         <main className="admin">
+          <div className="sign-out-container">
+            <Button text={"SAIR"} />
+          </div>
           <section className="project-list">
             <h1>PROJETOS</h1>
             <div className="project-container">

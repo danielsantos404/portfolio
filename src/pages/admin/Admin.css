@@ -6,6 +6,23 @@
   gap: 10px;
 }
 
+.admin .sign-out-container {
+  display: flex;
+  justify-content: right;
+}
+
+.admin .sign-out-container button {
+  background-color: var(--white);
+  color: var(--pri-red);
+  border: 2px solid var(--pri-red);
+  width: 10%;
+  height: 2vh;
+}
+
+.admin .sign-out-container button:hover {
+  text-decoration: underline;
+}
+
 .admin .project-list,
 .technology-list {
   display: flex;
@@ -30,8 +47,7 @@
   justify-content: right;
 }
 
-.admin .project-list button,
-.technology-list button {
+.admin button {
   width: 20%;
 }
 
