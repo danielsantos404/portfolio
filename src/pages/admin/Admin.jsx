@@ -28,14 +28,27 @@ function Admin() {
   useEffect(() => {
     // Apenas um useEffect é necessário aqui.
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // O console.log para pegar o UID pode ficar aqui se você ainda precisar
       if (currentUser) {
-        console.log("Usuário logado! UID:", currentUser.uid);
+        // Se existe um usuário logado, vamos checar o tempo da sessão
+        const loginTimestamp = localStorage.getItem("loginTimestamp");
+        const now = new Date().getTime();
+        const maxSessionTime = 24 * 60 * 60 * 1000;
+
+        if (loginTimestamp && now - loginTimestamp > maxSessionTime) {
+          // Se o tempo passou, desloga o usuário
+          console.log("Sessão expirada. Fazendo logout automático.");
+          signOut(auth); // A própria função signOut vai limpar o estado
+        } else {
+          // Se a sessão ainda é válida, define o usuário
+          setUser(currentUser);
+        }
+      } else {
+        // Se não há usuário, apenas define o estado como nulo
+        setUser(null);
       }
-      setUser(currentUser);
+
       setLoading(false);
     });
-
     // A função de limpeza retorna o 'unsubscribe'
     return () => unsubscribe();
   }, []); // O array vazio garante que o efeito rode apenas uma vez
@@ -46,6 +59,7 @@ function Admin() {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log("Login bem-sucedido:", result.user.displayName);
+        localStorage.setItem("loginTimestamp", new Date().getTime());
       })
       .catch((error) => {
         console.error("Erro no login:", error);
@@ -56,6 +70,7 @@ function Admin() {
     signOut(auth)
       .then(() => {
         console.log("Usuário deslogado com sucesso.");
+        localStorage.removeItem("loginTimestamp");
       })
       .catch((error) => {
         console.log("Erro ao fazer logout: ", error);
