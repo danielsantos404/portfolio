@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
   GithubAuthProvider,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase"; // Verifique se o caminho está correto
 
@@ -51,6 +52,16 @@ function Admin() {
       });
   };
 
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("Usuário deslogado com sucesso.");
+      })
+      .catch((error) => {
+        console.log("Erro ao fazer logout: ", error);
+      });
+  };
+
   // Mostra uma tela de carregamento enquanto o Firebase verifica o status do login
   if (loading) {
     return <div className="loading-screen">Carregando...</div>;
@@ -76,7 +87,7 @@ function Admin() {
         // Se HOUVER um usuário, mostra o painel de admin
         <main className="admin">
           <div className="sign-out-container">
-            <Button text={"SAIR"} />
+            <Button text={"SAIR"} onClick={handleLogout} />
           </div>
           <section className="project-list">
             <h1>PROJETOS</h1>
