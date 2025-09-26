@@ -3,6 +3,7 @@ import Button from "../../components/button/Button";
 import ProjectForm from "./components/project-form/ProjectForm";
 import TechnologyForm from "./components/technology-form/TechnologyForm";
 import githubIcon from "../../assets/githubIcon.svg";
+import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import {
@@ -27,7 +28,7 @@ function Admin() {
         const maxSessionTime = 24 * 60 * 60 * 1000;
 
         if (loginTimestamp && now - loginTimestamp > maxSessionTime) {
-          console.log("Sessão expirada. Fazendo logout automático.");
+          toast.info("Sessão expirada. Fazendo logout automático.");
           signOut(auth);
         } else {
           setUser(currentUser);
@@ -45,21 +46,24 @@ function Admin() {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("Login bem-sucedido:", result.user.displayName);
+        toast.success(`Login efetuado com sucesso, ${result.user.displayName}!`);
         localStorage.setItem("loginTimestamp", new Date().getTime());
       })
       .catch((error) => {
-        console.error("Erro no login:", error);
+        const errorMessage = `Houve um erro ao tentar fazer o login: ${error.code}`;
+        toast.error(errorMessage);
+        console.error("Erro ao fazer login: ", error);
       });
   };
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log("Usuário deslogado com sucesso.");
+        toast.success("Logout efetuado com sucesso.");
         localStorage.removeItem("loginTimestamp");
       })
       .catch((error) => {
+        toast.error("Houve um erro ao tentar fazer o logout.");
         console.log("Erro ao fazer logout: ", error);
       });
   };
