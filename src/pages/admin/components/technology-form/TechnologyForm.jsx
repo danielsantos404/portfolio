@@ -28,6 +28,7 @@ function TechnologyForm({ isOpen, onClose }) {
             required
           />
           <div className="buttonContainer">
+            <button>Favoritar</button>
             <button>Deletar</button>
             <button type="submit">Salvar</button>
           </div>
