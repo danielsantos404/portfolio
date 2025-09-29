@@ -11,6 +11,10 @@
     border: none;
 }
 
+.tox-tinymce-aux {
+  z-index: 9999 !important;
+}
+
 .modal-overlay .modal-container form .buttonContainer  {
     display: flex;
     justify-content: center;
