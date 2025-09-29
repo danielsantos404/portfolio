@@ -1,18 +1,52 @@
 import "./ProjectForm.css";
 import React, { useState } from "react";
 import Select from "react-select";
-import { Editor } from "@tinymce/tinymce-react"; // Você já tinha isso, ótimo!
+import { Editor } from "@tinymce/tinymce-react";
 
 const techOptions = [
-  /* ... */
+  { value: "react", label: "React" },
+  { value: "javascript", label: "JavaScript" },
+  { value: "firebase", label: "Firebase" },
+  { value: "css", label: "CSS3" },
+  { value: "html", label: "HTML5" },
+  { value: "nodejs", label: "Node.js" },
+  { value: "typescript", label: "TypeScript" },
 ];
 const customStyles = {
-  /* ... */
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: "1px dotted silver",
+    color: state.isSelected ? "white" : "var(--black)",
+    backgroundColor: state.isSelected
+      ? "#007bff"
+      : state.isFocused
+      ? "var(--ter-gray)"
+      : "white",
+    padding: 15,
+  }),
+  control: (provided) => ({
+    ...provided,
+    borderColor: "#ccc",
+    boxShadow: "none",
+    borderRadius: "16px",
+  }),
+  multiValue: (styles) => ({
+    ...styles,
+    backgroundColor: "var(--ter-gray)",
+    borderRadius: "16px",
+  }),
+  multiValueLabel: (styles) => ({ ...styles, color: "var(--black)" }),
+  multiValueRemove: (styles) => ({
+    ...styles,
+    color: "var(--black)",
+    borderRadius: "0 16px 16px 0",
+    ":hover": { backgroundColor: "var(--pri-red)", color: "white" },
+  }),
 };
 
 function ProjectForm({ isOpen, onClose }) {
   const [selectedTechs, setSelectedTechs] = useState([]);
-  // NOVO: Estado para a descrição do projeto
+
   const [description, setDescription] = useState("");
 
   if (!isOpen) return null;
