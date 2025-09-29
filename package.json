@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^6.3.0",
     "firebase": "^12.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -17,7 +18,8 @@
     "react-router-dom": "^7.7.0",
     "react-scroll": "^1.9.3",
     "react-select": "^5.10.2",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "tinymce": "^8.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
