@@ -1,6 +1,8 @@
 import "./Home.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
 import myPic from "../../assets/myPic.png";
@@ -39,6 +41,33 @@ function Home() {
     if (newWindow) {
       newWindow.opener = null;
     }
+  };
+
+  const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          toast.success("Mensagem enviada com sucesso!");
+          form.current.reset();
+          setIsLoading(false);
+        },
+        (error) => {
+          toast.error("Ocorreu um erro ao enviar a mensagem.");
+          console.log("ERRO EMAILJS: ", error.text);
+          setIsLoading(false);
+        }
+      );
   };
 
   return (
@@ -205,16 +234,36 @@ function Home() {
 
           <div className="contact-form">
             <h1>MANDE UM E-MAIL</h1>
-            <form>
-              <input type="text" placeholder="Digite seu nome" required />
-              <input type="email" placeholder="Digite seu e-mail" required />
-              <input type="subject" placeholder="Informe o assunto" required />
+            <form ref={form} onSubmit={sendEmail}>
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Digite seu nome"
+                required
+              />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Informe o assunto"
+                required
+              />
               <textarea
+                name="message"
                 placeholder="Escreva sua mensagem com detalhes"
                 rows="5"
                 required
               ></textarea>
-              <Button text={"ENVIAR"} />
+
+              <Button
+                text={isLoading ? "ENVIANDO..." : "ENVIAR"}
+                disabled={isLoading}
+              />
             </form>
           </div>
         </section>
