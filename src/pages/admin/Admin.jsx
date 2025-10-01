@@ -5,20 +5,36 @@ import TechnologyForm from "./components/technology-form/TechnologyForm";
 import githubIcon from "../../assets/githubIcon.svg";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import {
   onAuthStateChanged,
   GithubAuthProvider,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 
 function Admin() {
   const [isProjectModalOpen, setProjectModalOpen] = useState(false);
   const [isTechnologyModalOpen, setTechnologyModalOpen] = useState(false);
-
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [technologies, setTechnologies] = useState([]);
+  const [editingTechnology, setEditingTechnology] = useState(null);
+
+  const fetchTechnologies = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "technologies"));
+      const technologiesData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTechnologies(technologiesData);
+    } catch (error) {
+      toast.error("Erro ao buscar tecnologias.");
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -32,21 +48,43 @@ function Admin() {
           signOut(auth);
         } else {
           setUser(currentUser);
+          fetchTechnologies();
         }
       } else {
         setUser(null);
+        setTechnologies([]);
       }
 
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
+
+  const handleOpenTechForm = (tech = null) => {
+    setEditingTechnology(tech);
+    setTechnologyModalOpen(true);
+  };
+
+  const handleDeleteTechnology = async (id) => {
+    if (window.confirm("Tem certeza que deseja deletar esta tecnologia?")) {
+      try {
+        await deleteDoc(doc(db, "technologies", id));
+        toast.success("Tecnologia deletada com sucesso!");
+        fetchTechnologies();
+      } catch (error) {
+        toast.error("Erro ao deletar tecnologia.");
+      }
+    }
+  };
 
   const handleGithubLogin = () => {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        toast.success(`Login efetuado com sucesso, ${result.user.displayName}!`);
+        toast.success(
+          `Login efetuado com sucesso, ${result.user.displayName}!`
+        );
         localStorage.setItem("loginTimestamp", new Date().getTime());
       })
       .catch((error) => {
@@ -112,23 +150,28 @@ function Admin() {
           </section>
 
           <hr />
-
           <section className="technology-list">
             <h1>TECNOLOGIAS</h1>
-            <div className="technology-container">
-              <p>NOME DA TECNOLOGIA</p>
-            </div>
-            <div className="technology-container">
-              <p>NOME DA TECNOLOGIA</p>
-            </div>
+            {technologies.map((tech) => (
+              <div key={tech.id} className="technology-container">
+                <p>{tech.name}</p>
+                <div>
+                  <button onClick={() => handleOpenTechForm(tech)}>
+                    Editar
+                  </button>
+                  <button onClick={() => handleDeleteTechnology(tech.id)}>
+                    Deletar
+                  </button>
+                </div>
+              </div>
+            ))}
             <div className="add-button-container">
-              <Button
-                text={"ADICIONAR"}
-                onClick={() => setTechnologyModalOpen(true)}
-              />
+              <Button text={"ADICIONAR"} onClick={() => handleOpenTechForm()} />
               <TechnologyForm
                 isOpen={isTechnologyModalOpen}
                 onClose={() => setTechnologyModalOpen(false)}
+                onSuccess={fetchTechnologies}
+                technologyToEdit={editingTechnology}
               />
             </div>
           </section>
