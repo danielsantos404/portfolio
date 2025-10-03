@@ -113,14 +113,17 @@ function Admin() {
     }
   };
 
-  const handleDeleteTechnology = async (id) => {
+  const handleDeleteTechnology = async (tech) => {
     if (window.confirm("Tem certeza que deseja deletar esta tecnologia?")) {
       try {
-        await deleteDoc(doc(db, "technologies", id));
-        toast.success("Tecnologia deletada com sucesso!");
+        await deleteDoc(doc(db, "technologies", tech.id));
+        const iconRef = ref(storage, tech.iconUrl);
+        await deleteObject(iconRef);
+        toast.success("Tecnologia e imagem deletadas com sucesso!");
         fetchTechnologies();
       } catch (error) {
         toast.error("Erro ao deletar tecnologia.");
+        console.error("Erro ao deletar:", error);
       }
     }
   };
@@ -216,7 +219,7 @@ function Admin() {
                   <button onClick={() => handleOpenTechForm(tech)}>
                     Editar
                   </button>
-                  <button onClick={() => handleDeleteTechnology(tech.id)}>
+                  <button onClick={() => handleDeleteTechnology(tech)}>
                     Deletar
                   </button>
                 </div>

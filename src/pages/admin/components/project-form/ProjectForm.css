@@ -1,28 +1,28 @@
 .modal-overlay .modal-container form {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  gap: 8px;
 }
 
 .modal-overlay .modal-container form input {
-    border-radius: 16px;
-    padding: 2%;
-    border: none;
+  border-radius: 16px;
+  padding: 2%;
+  border: none;
 }
 
 .tox-tinymce-aux {
   z-index: 9999 !important;
 }
 
-.modal-overlay .modal-container form .buttonContainer  {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+.modal-overlay .modal-container form .buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
 .modal-overlay .modal-container .buttonContainer button {
-    border-radius: 16px;
-    border: none;
-    cursor: pointer;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
 }
