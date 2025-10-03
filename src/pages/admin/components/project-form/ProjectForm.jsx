@@ -1,17 +1,12 @@
 import "./ProjectForm.css";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Select from "react-select";
 import { Editor } from "@tinymce/tinymce-react";
+import { toast } from "react-toastify";
+import { storage, db } from "../../../../firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
-const techOptions = [
-  { value: "react", label: "React" },
-  { value: "javascript", label: "JavaScript" },
-  { value: "firebase", label: "Firebase" },
-  { value: "css", label: "CSS3" },
-  { value: "html", label: "HTML5" },
-  { value: "nodejs", label: "Node.js" },
-  { value: "typescript", label: "TypeScript" },
-];
 const customStyles = {
   option: (provided, state) => ({
     ...provided,
@@ -44,10 +39,96 @@ const customStyles = {
   }),
 };
 
-function ProjectForm({ isOpen, onClose }) {
-  const [selectedTechs, setSelectedTechs] = useState([]);
-
+function ProjectForm({
+  isOpen,
+  onClose,
+  onSuccess,
+  projectToEdit,
+  availableTechnologies,
+}) {
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [projectImageFile, setProjectImageFile] = useState(null);
+  const [selectedTechs, setSelectedTechs] = useState([]);
+  const [repoUrl, setRepoUrl] = useState("");
+  const [deployUrl, setDeployUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const isEditing = !!projectToEdit;
+
+  const techOptions = useMemo(
+    () =>
+      availableTechnologies.map((tech) => ({
+        value: tech.id,
+        label: tech.name,
+        ...tech,
+      })),
+    [availableTechnologies]
+  );
+
+  useEffect(() => {
+    if (isEditing && isOpen) {
+      setName(projectToEdit.name || "");
+      setDescription(projectToEdit.description || "");
+      setSelectedTechs(projectToEdit.technologies || []);
+      setRepoUrl(projectToEdit.repoUrl || "");
+      setDeployUrl(projectToEdit.deployUrl || "");
+    } else {
+      setName("");
+      setDescription("");
+      setProjectImageFile(null);
+      setSelectedTechs([]);
+      setRepoUrl("");
+      setDeployUrl("");
+    }
+  }, [projectToEdit, isOpen]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      let imageUrl = projectToEdit?.imageUrl;
+
+      if (projectImageFile) {
+        const storageRef = ref(storage, `projects/${projectImageFile.name}`);
+        const snapshot = await uploadBytes(storageRef, projectImageFile);
+        imageUrl = await getDownloadURL(snapshot.ref);
+      }
+
+      if (!imageUrl) {
+        toast.warn("Por favor, adicione uma imagem para o projeto.");
+        setIsLoading(false);
+        return;
+      }
+
+      const projectData = {
+        name,
+        description,
+        imageUrl,
+        technologies: selectedTechs,
+        repoUrl,
+        deployUrl,
+      };
+
+      if (isEditing) {
+        const projectRef = doc(db, "projects", projectToEdit.id);
+        await updateDoc(projectRef, projectData);
+        toast("Projeto atualizado com sucesso!");
+      } else {
+        await addDoc(collection(db, "projects"), projectData);
+        toast.success("Projeto adicionado com sucesso!");
+      }
+
+      onSuccess();
+      onClose();
+    } catch (error) {
+      toast.error("Ocorreu um erro ao salvar o projeto.");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -57,16 +138,21 @@ function ProjectForm({ isOpen, onClose }) {
         <button className="modal-close" onClick={onClose}>
           ×
         </button>
-        <form>
-          <h2>Adicionar Projeto</h2>
+        <form onSubmit={handleSubmit}>
+          <h2>{isEditing ? "Editar" : "Adicionar"} Projeto</h2>
           <label>
             Imagem do projeto:
-            <input type="file" name="projectImage" accept="image/*" required />
+            <input
+              type="file"
+              onChange={(e) => setProjectImageFile(e.target.files[0])}
+              accept="image/*"
+            />
           </label>
           <input
             placeholder="Nome do projeto"
             type="text"
-            name="projectName"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
           <Editor
@@ -86,25 +172,28 @@ function ProjectForm({ isOpen, onClose }) {
             isMulti
             name="techs"
             options={techOptions}
-            styles={customStyles}
-            placeholder="Selecione as tecnologias"
+            placeholder="Selecione as tecnologias..."
             onChange={setSelectedTechs}
             value={selectedTechs}
+            styles={customStyles}
           />
           <input
             placeholder="URL do repositório do projeto"
             type="url"
-            name="projectRepository"
+            value={repoUrl}
+            onChange={(e) => setRepoUrl(e.target.value)}
             required
           />
           <input
             placeholder="URL do deploy do projeto"
             type="url"
-            name="projectDeploy"
+            value={deployUrl}
+            onChange={(e) => setDeployUrl(e.target.value)}
           />
           <div className="buttonContainer">
-            <button>Deletar</button>
-            <button type="submit">Salvar</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Salvando..." : "Salvar"}
+            </button>
           </div>
         </form>
       </div>

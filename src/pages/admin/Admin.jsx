@@ -13,6 +13,8 @@ import {
   signOut,
 } from "firebase/auth";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
+import { storage } from "../../firebase";
 
 function Admin() {
   const [isProjectModalOpen, setProjectModalOpen] = useState(false);
@@ -22,6 +24,8 @@ function Admin() {
 
   const [technologies, setTechnologies] = useState([]);
   const [editingTechnology, setEditingTechnology] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [editingProject, setEditingProject] = useState(null);
 
   const fetchTechnologies = async () => {
     try {
@@ -33,6 +37,19 @@ function Admin() {
       setTechnologies(technologiesData);
     } catch (error) {
       toast.error("Erro ao buscar tecnologias.");
+    }
+  };
+
+  const fetchProjects = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "projects"));
+      const projectsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProjects(projectsData);
+    } catch (error) {
+      toast.error("Erro ao buscar projetos.");
     }
   };
 
@@ -49,10 +66,12 @@ function Admin() {
         } else {
           setUser(currentUser);
           fetchTechnologies();
+          fetchProjects();
         }
       } else {
         setUser(null);
         setTechnologies([]);
+        setProjects([]);
       }
 
       setLoading(false);
@@ -64,6 +83,34 @@ function Admin() {
   const handleOpenTechForm = (tech = null) => {
     setEditingTechnology(tech);
     setTechnologyModalOpen(true);
+  };
+
+  const handleOpenProjectForm = (project = null) => {
+    setEditingProject(project);
+    setProjectModalOpen(true);
+  };
+
+  const handleDeleteProject = async (project) => {
+    if (
+      !window.confirm(
+        `Tem certeza que deseja deletar o projeto "${project.name}"?`
+      )
+    ) {
+      return;
+    }
+
+    try {
+      await deleteDoc(doc(db, "projects", project.id));
+
+      const imageRef = ref(storage, project.imageUrl);
+      await deleteObject(imageRef);
+
+      toast.success("Projeto deletado com sucesso!");
+      fetchProjects();
+    } catch (error) {
+      toast.error("Erro ao deletar projeto.");
+      console.error(error);
+    }
   };
 
   const handleDeleteTechnology = async (id) => {
@@ -131,20 +178,30 @@ function Admin() {
           </div>
           <section className="project-list">
             <h1>PROJETOS</h1>
-            <div className="project-container">
-              <p>NOME DO PROJETO</p>
-            </div>
-            <div className="project-container">
-              <p>NOME DO PROJETO</p>
-            </div>
+            {projects.map((project) => (
+              <div key={project.id} className="project-container">
+                <p>{project.name}</p>
+                <div>
+                  <button onClick={() => handleOpenProjectForm(project)}>
+                    Editar
+                  </button>
+                  <button onClick={() => handleDeleteProject(project)}>
+                    Deletar
+                  </button>
+                </div>
+              </div>
+            ))}
             <div className="add-button-container">
               <Button
                 text={"ADICIONAR"}
-                onClick={() => setProjectModalOpen(true)}
+                onClick={() => handleOpenProjectForm()}
               />
               <ProjectForm
                 isOpen={isProjectModalOpen}
                 onClose={() => setProjectModalOpen(false)}
+                onSuccess={fetchProjects}
+                projectToEdit={editingProject}
+                availableTechnologies={technologies}
               />
             </div>
           </section>
