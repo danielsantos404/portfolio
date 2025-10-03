@@ -1,8 +1,10 @@
 import "./Home.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import emailjs from "@emailjs/browser";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
 import myPic from "../../assets/myPic.png";
@@ -15,6 +17,26 @@ import wppIcon from "../../assets/wppIcon.svg";
 import linkedinIcon from "../../assets/linkedinIcon.svg";
 
 function Home() {
+  const [technologies, setTechnologies] = useState([]);
+
+  useEffect(() => {
+    const fetchTechnologies = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "technologies"));
+        const technologiesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTechnologies(technologiesData);
+      } catch (error) {
+        console.log("Erro as buscar tecnologias:", error);
+        toast.error("Não foi possível carregar tecnologias.");
+      }
+    };
+
+    fetchTechnologies();
+  }, []);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -149,66 +171,16 @@ function Home() {
         <section className="technologies" id="technologies">
           <h1 className="sec-title">TECNOLOGIAS</h1>
           <div className="tec-icon-container">
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
-            <Icon
-              src={cesarIcon}
-              bgColor="var(--pri-gray)"
-              size={isMobile ? "small" : "large"}
-            />
+            {technologies.map((tech) => (
+              <Icon
+                key={tech.id}
+                src={tech.iconUrl}
+                title={tech.name}
+                bgColor="var(--pri-gray)"
+                iconColor="var(--white)"
+                size={isMobile ? "small" : "large"}
+              />
+            ))}
           </div>
         </section>
 
