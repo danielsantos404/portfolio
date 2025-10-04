@@ -2,11 +2,13 @@ import "./Modal.css";
 import { createPortal } from "react-dom";
 import Button from "../button/Button";
 import Icon from "../icon/Icon";
-import cesarIcon from "../../assets/cesarIcon.png";
 import githubIcon from "../../assets/githubIcon.svg";
 import deployIcon from "../../assets/deployIcon.svg";
 
-function Modal({ onClose }) {
+function Modal({ onClose, project }) {
+  const openSecureLink = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -15,38 +17,49 @@ function Modal({ onClose }) {
         </button>
 
         <div className="modal-content">
-          <div className="modal-img-container"></div>
+          <div
+            className="modal-img-container"
+            style={{ backgroundImage: `url(${project.imageUrl})` }}
+          ></div>
+
           <div className="modal-text-container">
-            <h1>Titulo do Projeto</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-            </p>
+            <h1>{project.name}</h1>
+
+            <div
+              className="modal-description"
+              dangerouslySetInnerHTML={{ __html: project.description }}
+            />
           </div>
+
           <div className="modal-icon-container">
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
-            <Icon src={cesarIcon} bgColor="var(--white)" />
+            {project.technologies.map((tech) => (
+              <Icon
+                key={tech.value}
+                src={tech.iconUrl}
+                title={tech.label}
+                bgColor="var(--white)"
+                iconColor="var(--black)"
+              />
+            ))}
           </div>
+
           <div className="modal-btt-container">
-            <Button
-              imgUrl={githubIcon}
-              text={"GitHub"}
-              id={"github-modal-button"}
-            />
-            <Button
-              imgUrl={deployIcon}
-              text={"Deploy"}
-              id={"deploy-modal-button"}
-            />
+            {project.repoUrl && (
+              <Button
+                imgUrl={githubIcon}
+                text={"GitHub"}
+                id={"github-modal-button"}
+                onClick={() => openSecureLink(project.repoUrl)}
+              />
+            )}
+            {project.deployUrl && (
+              <Button
+                imgUrl={deployIcon}
+                text={"Deploy"}
+                id={"deploy-modal-button"}
+                onClick={() => openSecureLink(project.deployUrl)}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -42,7 +42,6 @@
 .modal-overlay .modal-container .modal-content .modal-img-container {
   height: 25vh;
   border-radius: 20px 20px 0 0;
-  background-image: url("https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,24 +53,32 @@
   font-size: 70%;
 }
 
-.modal-overlay .modal-container .modal-content .modal-text-container p {
+.modal-overlay
+  .modal-container
+  .modal-content
+  .modal-text-container
+  .modal-description {
+  max-height: 30vh;
   text-align: justify;
+  overflow: auto;
+  scrollbar-color: white transparent;
+  scrollbar-width: thin;
 }
 
 .modal-overlay .modal-container .modal-content .modal-icon-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 0 25% 5%;
-  gap: 10%;
-  justify-content: center;
-  margin: auto;
+  row-gap: 1vh;
+  column-gap: 1vh;
 }
 
 .modal-overlay .modal-container .modal-content .modal-btt-container {
   display: flex;
   flex-direction: row;
-  border-radius: 0 0 20px 20px;
   gap: 1px;
+  border-radius: 0 0 20px 20px;
+  background-color: var(--white);
 }
 
 .modal-overlay .modal-container .modal-content .modal-btt-container button {
@@ -81,6 +88,8 @@
   color: var(--black);
   font-weight: bold;
   border: none;
+  border-radius: 0 0 20px 20px;
+
   cursor: pointer;
   transition: 0.2s background;
 }
@@ -91,20 +100,4 @@
   .modal-btt-container
   button:hover {
   background-color: var(--ter-gray);
-}
-
-.modal-overlay
-  .modal-container
-  .modal-content
-  .modal-btt-container
-  #github-modal-button {
-  border-radius: 0 0 0 20px;
-}
-
-.modal-overlay
-  .modal-container
-  .modal-content
-  .modal-btt-container
-  #deploy-modal-button {
-  border-radius: 0 0 20px 0;
 }

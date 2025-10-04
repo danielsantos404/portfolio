@@ -114,7 +114,7 @@ function ProjectForm({
       if (isEditing) {
         const projectRef = doc(db, "projects", projectToEdit.id);
         await updateDoc(projectRef, projectData);
-        toast("Projeto atualizado com sucesso!");
+        toast.success("Projeto atualizado com sucesso!");
       } else {
         await addDoc(collection(db, "projects"), projectData);
         toast.success("Projeto adicionado com sucesso!");
@@ -182,7 +182,6 @@ function ProjectForm({
             type="url"
             value={repoUrl}
             onChange={(e) => setRepoUrl(e.target.value)}
-            required
           />
           <input
             placeholder="URL do deploy do projeto"
