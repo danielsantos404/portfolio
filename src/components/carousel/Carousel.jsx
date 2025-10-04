@@ -3,39 +3,8 @@ import "./Carousel.css";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import Card from "../card/Card";
-
-const cardsData = [
-  {
-    title: "Projeto 1",
-    image:
-      "https://images.unsplash.com/photo-1549989476-69a92fa57c36?auto=format&fit=crop&w=800&q=60",
-    description: "Descrição do Projeto 1",
-  },
-  {
-    title: "Projeto 2",
-    image:
-      "https://images.unsplash.com/photo-1549396535-c11d5c55b9df?auto=format&fit=crop&w=800&q=60",
-    description: "Descrição do Projeto 2",
-  },
-  {
-    title: "Projeto 3",
-    image:
-      "https://images.unsplash.com/photo-1550133730-695473e544be?auto=format&fit=crop&w=800&q=60",
-    description: "Descrição do Projeto 3",
-  },
-  {
-    title: "Projeto 4",
-    image:
-      "https://images.unsplash.com/photo-1550167164-1b67c2be3973?auto=format&fit=crop&w=800&q=60",
-    description: "Descrição do Projeto 4",
-  },
-  {
-    title: "Projeto 5",
-    image:
-      "https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?auto=format&fit=crop&w=800&q=60",
-    description: "Descrição do Projeto 5",
-  },
-];
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const responsive = {
   desktop: {
@@ -58,11 +27,41 @@ const responsive = {
 export default function CustomCarousel() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 464);
 
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "projects"));
+        const projectsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProjects(projectsData);
+      } catch (error) {
+        console.error("Erro ao buscar projetos para o carrossel:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 464);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  if (loading) {
+    return (
+      <p style={{ color: "white", textAlign: "center" }}>
+        Carregando projetos...
+      </p>
+    );
+  }
 
   return (
     <div className="carousel-wrapper">
@@ -97,13 +96,8 @@ export default function CustomCarousel() {
         slidesToSlide={1}
         swipeable
       >
-        {cardsData.map((card, idx) => (
-          <Card
-            key={idx}
-            title={card.title}
-            image={card.image}
-            description={card.description}
-          />
+        {projects.map((project) => (
+          <Card key={project.id} project={project} />
         ))}
       </Carousel>
     </div>
