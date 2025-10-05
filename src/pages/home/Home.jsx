@@ -7,10 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import emailjs from "@emailjs/browser";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
-import myPic from "../../assets/myPic.png";
-import uninassauIcon from "../../assets/uninassauIcon.png";
-import softexIcon from "../../assets/softexIcon.png";
-import cesarIcon from "../../assets/cesarIcon.png";
+import myPic from "../../assets/myPic.webp";
 import Carousel from "../../components/carousel/Carousel";
 import Button from "../../components/button/Button";
 import wppIcon from "../../assets/wppIcon.svg";
@@ -115,17 +112,25 @@ function Home() {
             <div className="text-container">
               <h1>DANIEL SANTOS</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae itaque voluptas minima, quibusdam necessitatibus
-                tempore unde nostrum. Dicta reprehenderit, necessitatibus eaque
-                sunt, omnis, voluptatem nxostrum atque assumenda mollitia
-                repudiandae ex.
+                Tecnólogo em Análise e Desenvolvimento de Sistemas, programador Front-End e um grande entusiasta do desenvolvimento web, tendo como objetivo a criação de soluções robustas, escalonáveis e com foco na usabilidade do usuário.
               </p>
             </div>
             <div className="education-container">
               <div className="education-content">
                 <div className="education-icon">
-                  <Icon src={uninassauIcon} alt="ícone de educação" />
+                  <img src="/src/assets/ficrIcon.webp" alt="" />
+                </div>
+                <div className="education-infos">
+                  <h5>
+                    Análise e Desenvolvimento de Sistemas (em curso)
+                  </h5>
+                  <p>FICR</p>
+                </div>
+              </div>
+
+              <div className="education-content">
+                <div className="education-icon">
+                  <img src="/src/assets/uninassauIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Análise e Desenvolvimento de Sistemas</h5>
@@ -135,7 +140,7 @@ function Home() {
 
               <div className="education-content">
                 <div className="education-icon">
-                  <Icon src={softexIcon} alt="ícone de educação" />
+                  <img src="/src/assets/softexIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Formação Acelerada em Programação</h5>
@@ -145,7 +150,7 @@ function Home() {
 
               <div className="education-content">
                 <div className="education-icon">
-                  <Icon src={cesarIcon} alt="ícone de educação" />
+                  <img src="/src/assets/cesarIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Formação Acelereda em Soluções de Techdesign</h5>
