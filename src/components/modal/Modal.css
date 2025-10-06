@@ -48,7 +48,7 @@
 }
 
 .modal-overlay .modal-container .modal-content .modal-text-container {
-  padding: 5% 15%;
+  padding: 5% 10%;
   text-align: center;
   font-size: 70%;
 }
@@ -63,6 +63,19 @@
   overflow: auto;
   scrollbar-color: white transparent;
   scrollbar-width: thin;
+  font-size: 13px;
+}
+
+.modal-description a {
+  color: white;
+}
+
+.modal-description h3 {
+  font-size: 20px;
+}
+
+.modal-description hr {
+  line-height: 10px;
 }
 
 .modal-overlay .modal-container .modal-content .modal-icon-container {
