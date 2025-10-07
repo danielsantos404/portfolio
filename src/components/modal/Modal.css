@@ -53,6 +53,11 @@
   font-size: 70%;
 }
 
+.modal-overlay .modal-container .modal-content .modal-text-container .modal-project-title {
+  text-decoration: underline;
+  padding-bottom: 5%;
+}
+
 .modal-overlay
   .modal-container
   .modal-content

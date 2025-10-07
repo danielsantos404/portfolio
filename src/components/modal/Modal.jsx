@@ -23,7 +23,7 @@ function Modal({ onClose, project }) {
           ></div>
 
           <div className="modal-text-container">
-            <h1>{project.name}</h1>
+            <h1 className="modal-project-title">{project.name}</h1>
 
             <div
               className="modal-description"

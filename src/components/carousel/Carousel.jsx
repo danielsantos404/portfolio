@@ -65,8 +65,8 @@ export default function CustomCarousel() {
 
   return (
     <div className="carousel-wrapper">
-      <div className="carousel-shadow left" />
-      <div className="carousel-shadow right" />
+      {/* <div className="carousel-shadow left" />
+      <div className="carousel-shadow right" /> */}
 
       <Carousel
         additionalTransfrom={0}
