@@ -38,11 +38,11 @@ function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 464);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 520);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 464);
+      setIsMobile(window.innerWidth <= 520);
     };
 
     window.addEventListener("resize", handleResize);

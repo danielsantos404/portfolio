@@ -2,6 +2,7 @@
   position: sticky;
   z-index: 9998;
   top: 0;
+  width: 100%;
   font-size: small;
   font-weight: bold;
   background-color: var(--pri-gray);
