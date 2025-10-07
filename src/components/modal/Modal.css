@@ -70,12 +70,29 @@
   color: white;
 }
 
-.modal-description h3 {
-  font-size: 20px;
+.modal-description a:hover {
+  background-color: var(--sec-gray);
+}
+
+.modal-description h1 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.modal-description h2 {
+  font-size: 16px;
+}
+
+.modal-description p {
+  margin-bottom: 8px;
 }
 
 .modal-description hr {
-  line-height: 10px;
+  margin: 8px 0;
+}
+
+.modal-description ul li {
+  margin: 8px;
 }
 
 .modal-overlay .modal-container .modal-content .modal-icon-container {
