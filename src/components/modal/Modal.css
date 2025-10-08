@@ -124,9 +124,7 @@
   font-weight: bold;
   border: none;
   border-radius: 0 0 20px 20px;
-
   cursor: pointer;
-  transition: 0.2s background;
 }
 
 .modal-overlay
@@ -135,4 +133,12 @@
   .modal-btt-container
   button:hover {
   background-color: var(--ter-gray);
+}
+
+.modal-overlay
+  .modal-container
+  .modal-content
+  .modal-btt-container
+  #github-modal-button, #deploy-modal-button {
+  transform: none;
 }

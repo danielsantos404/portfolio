@@ -4,9 +4,6 @@
   align-items: center;
   gap: 2px;
   margin: 2vh 0;
-}
-
-.card{
   transition: transform 0.3s ease-in-out;
 }
 
