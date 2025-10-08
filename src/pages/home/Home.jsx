@@ -12,6 +12,7 @@ import Carousel from "../../components/carousel/Carousel";
 import Button from "../../components/button/Button";
 import wppIcon from "../../assets/wppIcon.svg";
 import linkedinIcon from "../../assets/linkedinIcon.svg";
+import paperplaneIcon from "../../assets/paperplaneIcon.svg";
 
 function Home() {
   const [technologies, setTechnologies] = useState([]);
@@ -215,29 +216,30 @@ function Home() {
               <input
                 type="text"
                 name="from_name"
-                placeholder="Digite seu nome"
+                placeholder="Seu nome"
                 required
               />
               <input
                 type="email"
                 name="from_email"
-                placeholder="Digite seu e-mail"
+                placeholder="Seu e-mail"
                 required
               />
               <input
                 type="text"
                 name="subject"
-                placeholder="Informe o assunto"
+                placeholder="Assunto"
                 required
               />
               <textarea
                 name="message"
-                placeholder="Escreva sua mensagem com detalhes"
+                placeholder="Mensagem detalhada"
                 rows="5"
                 required
               ></textarea>
 
               <Button
+                imgUrl={paperplaneIcon}
                 text={isLoading ? "ENVIANDO..." : "ENVIAR"}
                 disabled={isLoading}
               />

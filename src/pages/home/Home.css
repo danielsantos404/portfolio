@@ -169,10 +169,11 @@
 
 .home .contact .contact-form form input,
 textarea {
-  padding: 2%;
+  padding: 1.5% 4%;
   border-radius: 16px;
   border: none;
   resize: none;
+  font-size: medium;
 }
 
 .home .contact #wppBtn:hover {
@@ -184,8 +185,9 @@ textarea {
 }
 
 .home .contact .contact-form form .btn {
-  margin: 0 18vw;
-  padding: 2%;
+  margin: auto;
+  padding: 2% 0;
+  width: 13vw;
   background-color: var(--white);
   color: var(--black);
 }
