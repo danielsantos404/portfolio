@@ -5,6 +5,9 @@ function Icon({ src, bgColor, iconColor, title, size = "small" }) {
     width: size,
     height: size,
     backgroundColor: bgColor,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   };
 
   const iconStyle = {
@@ -24,8 +27,10 @@ function Icon({ src, bgColor, iconColor, title, size = "small" }) {
   return (
     <div
       style={containerStyle}
-      title={title}
       className={`icon-container ${sizeClass}`}
+      data-tooltip-id="icon-tooltip"
+      data-tooltip-content={title}
+      data-tooltip-place="top"
     >
       <div style={iconStyle} className="icon-vector" />
     </div>

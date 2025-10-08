@@ -113,7 +113,10 @@ function Home() {
             <div className="text-container">
               <h1>DANIEL SANTOS</h1>
               <p>
-                Tecnólogo em Análise e Desenvolvimento de Sistemas, programador Front-End e um grande entusiasta do desenvolvimento web, tendo como objetivo a criação de soluções robustas, escalonáveis e com foco na usabilidade do usuário.
+                Tecnólogo em Análise e Desenvolvimento de Sistemas, programador
+                Front-End e um grande entusiasta do desenvolvimento web, tendo
+                como objetivo a criação de soluções robustas, escalonáveis e com
+                foco na usabilidade do usuário.
               </p>
             </div>
             <div className="education-container">
@@ -122,9 +125,7 @@ function Home() {
                   <img src="/src/assets/ficrIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
-                  <h5>
-                    Análise e Desenvolvimento de Sistemas (em curso)
-                  </h5>
+                  <h5>Análise e Desenvolvimento de Sistemas (em curso)</h5>
                   <p>FICR</p>
                 </div>
               </div>
