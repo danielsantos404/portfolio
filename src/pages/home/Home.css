@@ -131,6 +131,14 @@
   margin: 0 auto;
 }
 
+.home .technologies .tec-icon-container > div {
+  transition: transform 0.3s ease-in-out;
+}
+
+.home .technologies .tec-icon-container > div:hover {
+  transform: scale(1.2);
+}
+
 .home .contact {
   display: flex;
   flex-direction: column;
