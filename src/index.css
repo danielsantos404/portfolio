@@ -18,6 +18,8 @@
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
   -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: transparent;
+  outline: none;
 }
 
 html {
