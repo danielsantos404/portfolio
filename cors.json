@@ -1,6 +1,6 @@
 [
   {
-    "origin": ["http://localhost:5173", "danielfs.vercel.app"],
+    "origin": ["http://localhost:5173", "http://danielfs.vercel.app"],
     "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     "responseHeader": [
       "Content-Type",
