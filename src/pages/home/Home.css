@@ -23,7 +23,8 @@
   flex-direction: row;
   width: 100%;
   background-color: var(--pri-gray);
-  padding: 2vh 15vw 0;
+  padding: 2vh 20vw 0;
+  gap: 5vh;
 }
 
 .home .about .left-container {
@@ -39,13 +40,14 @@
 .home .about .right-container {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 5vh;
   width: 55%;
-  padding-bottom: 20px;
+  padding-bottom: 6vh;
 }
 
 .home .about .right-container .text-container h1 {
   font-size: 300%;
+  line-height: 100%;
 }
 
 .home .about .right-container .text-container p {
@@ -55,7 +57,7 @@
 .home .about .right-container .education-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 1.5vh;
 }
 
 .home .about .right-container .education-container .education-content {
@@ -112,6 +114,10 @@
   gap: 6vh;
 }
 
+.home .projects h1 {
+  font-size: 60px;
+}
+
 .home .projects .btn {
   margin: 0 25vw;
   padding: 2%;
@@ -125,6 +131,10 @@
   background-color: var(--white);
   padding: 0 15vw;
   gap: 6vh;
+}
+
+.home .technologies h1 {
+  font-size: 60px;
 }
 
 .home .technologies .tec-icon-container {
@@ -154,6 +164,12 @@
 }
 
 .home .contact h1 {
+  margin-bottom: 3vh;
+  font-size: 60px;
+}
+
+.home .contact h2 {
+  font-size: 40px;
   margin-bottom: 3vh;
 }
 
@@ -215,6 +231,22 @@ textarea {
 }
 
 @media (max-width: 800px) {
+  .home .projects h1 {
+    font-size: 40px;
+  }
+
+  .home .technologies h1 {
+    font-size: 40px;
+  }
+
+  .home .contact h1 {
+    font-size: 40px;
+  }
+
+  .home .contact .contact-form h2 {
+    font-size: 20px;
+  }
+  
   .home .about .left-container {
     display: none;
   }
@@ -229,6 +261,18 @@ textarea {
 }
 
 @media (max-width: 520px) {
+  .home .projects h1 {
+    font-size: 30px;
+  }
+
+  .home .technologies h1 {
+    font-size: 30px;
+  }
+
+  .home .contact h1 {
+    font-size: 30px;
+  }
+  
   .home .about {
     justify-content: center;
   }

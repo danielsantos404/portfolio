@@ -111,7 +111,8 @@ function Home() {
           ></div>
           <div className="right-container">
             <div className="text-container">
-              <h1>DANIEL SANTOS</h1>
+              <h1 style={{ fontSize: "30px", marginTop: "2vh" }}><span style={{ textShadow: "0px 0px 4px var(--white)" }}>OLÁ</span>, ME CHAMO</h1>
+              <h1 style={{ fontSize: "60px" }}>DANIEL SANTOS!</h1>
               <p>
                 Tecnólogo em Análise e Desenvolvimento de Sistemas, programador
                 Front-End e um grande entusiasta do desenvolvimento web, tendo
@@ -212,7 +213,7 @@ function Home() {
           <p style={{ color: "var(--black)", fontWeight: "bold" }}>OU</p>
 
           <div className="contact-form">
-            <h1>MANDE UM E-MAIL</h1>
+            <h2>MANDE UM E-MAIL</h2>
             <form ref={form} onSubmit={sendEmail}>
               <input
                 type="text"
