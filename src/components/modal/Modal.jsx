@@ -2,8 +2,6 @@ import "./Modal.css";
 import { createPortal } from "react-dom";
 import Button from "../button/Button";
 import Icon from "../icon/Icon";
-import githubIcon from "../../assets/githubIcon.svg";
-import deployIcon from "../../assets/deployIcon.svg";
 
 function Modal({ onClose, project }) {
   const openSecureLink = (url) => {
@@ -46,7 +44,7 @@ function Modal({ onClose, project }) {
           <div className="modal-btt-container">
             {project.repoUrl && (
               <Button
-                imgUrl={githubIcon}
+                imgUrl="/assets/githubIcon.svg"
                 text={"GitHub"}
                 id={"github-modal-button"}
                 onClick={() => openSecureLink(project.repoUrl)}
@@ -54,7 +52,7 @@ function Modal({ onClose, project }) {
             )}
             {project.deployUrl && (
               <Button
-                imgUrl={deployIcon}
+                imgUrl="/assets/deployIcon.svg"
                 text={"Deploy"}
                 id={"deploy-modal-button"}
                 onClick={() => openSecureLink(project.deployUrl)}

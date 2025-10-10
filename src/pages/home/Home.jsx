@@ -7,12 +7,8 @@ import { collection, getDocs } from "firebase/firestore";
 import emailjs from "@emailjs/browser";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
-import myPic from "../../assets/myPic.webp";
 import Carousel from "../../components/carousel/Carousel";
 import Button from "../../components/button/Button";
-import wppIcon from "../../assets/wppIcon.svg";
-import linkedinIcon from "../../assets/linkedinIcon.svg";
-import paperplaneIcon from "../../assets/paperplaneIcon.svg";
 
 function Home() {
   const [technologies, setTechnologies] = useState([]);
@@ -106,7 +102,7 @@ function Home() {
           <div
             className="left-container"
             style={{
-              backgroundImage: `url(${myPic})`,
+              backgroundImage: `url(/assets/myPic.webp)`,
             }}
           ></div>
           <div className="right-container">
@@ -123,7 +119,7 @@ function Home() {
             <div className="education-container">
               <div className="education-content">
                 <div className="education-icon">
-                  <img src="/src/assets/ficrIcon.webp" alt="" />
+                  <img src="/assets/ficrIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Análise e Desenvolvimento de Sistemas (em curso)</h5>
@@ -133,7 +129,7 @@ function Home() {
 
               <div className="education-content">
                 <div className="education-icon">
-                  <img src="/src/assets/uninassauIcon.webp" alt="" />
+                  <img src="/assets/uninassauIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Análise e Desenvolvimento de Sistemas</h5>
@@ -143,7 +139,7 @@ function Home() {
 
               <div className="education-content">
                 <div className="education-icon">
-                  <img src="/src/assets/softexIcon.webp" alt="" />
+                  <img src="/assets/softexIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Formação Acelerada em Programação</h5>
@@ -153,7 +149,7 @@ function Home() {
 
               <div className="education-content">
                 <div className="education-icon">
-                  <img src="/src/assets/cesarIcon.webp" alt="" />
+                  <img src="/assets/cesarIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
                   <h5>Formação Acelereda em Soluções de Techdesign</h5>
@@ -196,13 +192,13 @@ function Home() {
           <h1 className="sec-title">CONTATO</h1>
 
           <Button
-            imgUrl={wppIcon}
+            imgUrl="/assets/wppIcon.svg"
             text={"WhatsApp"}
             id={"wppBtn"}
             onClick={() => openSecureLink("https://wa.me/5581998051299")}
           />
           <Button
-            imgUrl={linkedinIcon}
+            imgUrl="/assets/linkedinIcon.svg"
             text={"LinkedIn"}
             id={"linkedinBtn"}
             onClick={() =>
@@ -241,7 +237,7 @@ function Home() {
               ></textarea>
 
               <Button
-                imgUrl={paperplaneIcon}
+                imgUrl="/assets/paperplaneIcon.svg"
                 text={isLoading ? "ENVIANDO..." : "ENVIAR"}
                 disabled={isLoading}
               />

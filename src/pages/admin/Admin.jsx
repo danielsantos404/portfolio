@@ -2,7 +2,6 @@ import "./Admin.css";
 import Button from "../../components/button/Button";
 import ProjectForm from "./components/project-form/ProjectForm";
 import TechnologyForm from "./components/technology-form/TechnologyForm";
-import githubIcon from "../../assets/githubIcon.svg";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { auth, db } from "../../firebase";
@@ -167,7 +166,7 @@ function Admin() {
           <div className="admin-modal">
             <h2>Autentique-se 🔐</h2>
             <Button
-              imgUrl={githubIcon}
+              imgUrl="/assets/githubIcon.svg"
               text="GitHub"
               onClick={handleGithubLogin}
               style={{ margin: "24px auto", display: "block" }}
