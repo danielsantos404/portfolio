@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Icon from "../icon/Icon";
-import Modal from "../Modal/Modal";
+import Modal from "../modal/Modal";
 import "./Card.css";
 
 function Card({ project }) {
