@@ -17,8 +17,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+button {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
