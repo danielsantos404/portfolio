@@ -16,6 +16,9 @@ function App() {
         pauseOnHover={true}
         closeButton={true}
         theme="dark"
+        toastStyle={{
+          backgroundColor: "var(--pri-gray)",
+        }}
       />
 
       <Tooltip
