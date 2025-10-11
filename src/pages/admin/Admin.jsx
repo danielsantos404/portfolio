@@ -76,7 +76,7 @@ function Admin() {
       } else {
         setUser(null);
         setTechnologies([]);
-        setprojects([]);
+        setProjects([]);
       }
       setLoading(false);
     });
