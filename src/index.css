@@ -10,9 +10,9 @@
   --sec-red: #ce4444;
   --green: #25d366;
   --blue: #0e76a8;
-  --toastify-color-info: var(--ter-gray);
-  --toastify-color-success: var(--green);
-  --toastify-color-error: var(--pri-red);
+  --toastify-color-info: #afafaf;
+  --toastify-color-success: #25d366;
+  --toastify-color-error: #ff4747;
 }
 
 * {
