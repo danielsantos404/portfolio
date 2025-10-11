@@ -110,7 +110,7 @@ function Home() {
               <h1 style={{ fontSize: "30px", marginTop: "2vh" }}><span style={{ textShadow: "0px 0px 4px var(--white)" }}>OLÁ</span>, ME CHAMO</h1>
               <h1 style={{ fontSize: "60px" }}>DANIEL SANTOS!</h1>
               <p>
-                Tecnólogo em Análise e Desenvolvimento de Sistemas, programador
+                Sou tecnólogo em Análise e Desenvolvimento de Sistemas, programador
                 Front-End e um grande entusiasta do desenvolvimento web, tendo
                 como objetivo a criação de soluções robustas, escalonáveis e com
                 foco na usabilidade do usuário.
@@ -152,7 +152,7 @@ function Home() {
                   <img src="/assets/cesarIcon.webp" alt="" />
                 </div>
                 <div className="education-infos">
-                  <h5>Formação Acelereda em Soluções de Techdesign</h5>
+                  <h5>Formação Acelerada em Soluções de Techdesign</h5>
                   <p>Cesar School</p>
                 </div>
               </div>
