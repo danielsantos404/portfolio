@@ -20,11 +20,12 @@ function Admin() {
   const [isTechnologyModalOpen, setTechnologyModalOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const [technologies, setTechnologies] = useState([]);
   const [editingTechnology, setEditingTechnology] = useState(null);
   const [projects, setProjects] = useState([]);
   const [editingProject, setEditingProject] = useState(null);
+
+  const ADMIN_UID = "fVijNXykC7Sjk1fJvrz0jOWIfSw2";
 
   const fetchTechnologies = async () => {
     try {
@@ -55,24 +56,28 @@ function Admin() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        const loginTimestamp = localStorage.getItem("loginTimestamp");
-        const now = new Date().getTime();
-        const maxSessionTime = 24 * 60 * 60 * 1000;
+        if (currentUser.uid === ADMIN_UID) {
+          const loginTimestamp = localStorage.getItem("loginTimestamp");
+          const now = new Date().getTime();
+          const maxSessionTime = 24 * 60 * 60 * 1000;
 
-        if (loginTimestamp && now - loginTimestamp > maxSessionTime) {
-          toast.info("Sessão expirada. Fazendo logout automático.");
-          signOut(auth);
+          if (loginTimestamp && now - loginTimestamp > maxSessionTime) {
+            toast.info("Sessão expirada. Fazendo logout automático.");
+            signOut(auth);
+          } else {
+            setUser(currentUser);
+            fetchTechnologies();
+            fetchProjects();
+          }
         } else {
-          setUser(currentUser);
-          fetchTechnologies();
-          fetchProjects();
+          toast.error("Acesso negado. Esta é uma área restrita.");
+          signOut(auth);
         }
       } else {
         setUser(null);
         setTechnologies([]);
-        setProjects([]);
+        setprojects([]);
       }
-
       setLoading(false);
     });
 
