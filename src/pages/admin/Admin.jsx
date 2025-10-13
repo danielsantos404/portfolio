@@ -11,7 +11,16 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  updateDoc,
+  writeBatch,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
 import { storage } from "../../firebase";
 
@@ -24,12 +33,15 @@ function Admin() {
   const [editingTechnology, setEditingTechnology] = useState(null);
   const [projects, setProjects] = useState([]);
   const [editingProject, setEditingProject] = useState(null);
+  const [isSavingOrder, setIsSavingOrder] = useState(false);
 
   const ADMIN_UID = "fVijNXykC7Sjk1fJvrz0jOWIfSw2";
 
   const fetchTechnologies = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "technologies"));
+      const q = query(collection(db, "technologies"), orderBy("position"));
+      const querySnapshot = await getDocs(q);
+
       const technologiesData = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -37,6 +49,7 @@ function Admin() {
       setTechnologies(technologiesData);
     } catch (error) {
       toast.error("Erro ao buscar tecnologias.");
+      console.error("Detalhe do erro ao buscar tecnologias:", error);
     }
   };
 
@@ -164,6 +177,40 @@ function Admin() {
     return <div className="loading-screen">Carregando...</div>;
   }
 
+  const moveTechnology = (index, direction) => {
+    const newTechs = [...technologies];
+    const newIndex = direction === "up" ? index - 1 : index + 1;
+
+    if (newIndex < 0 || newIndex >= newTechs.length) {
+      return;
+    }
+
+    [newTechs[index], newTechs[newIndex]] = [
+      newTechs[newIndex],
+      newTechs[index],
+    ];
+
+    setTechnologies(newTechs);
+  };
+
+  const saveOrder = async () => {
+    setIsSavingOrder(true);
+    try {
+      const batch = writeBatch(db);
+      technologies.forEach((tech, index) => {
+        const docRef = doc(db, "technologies", tech.id);
+        batch.update(docRef, { position: index });
+      });
+      await batch.commit();
+      toast.success("Ordem salva com sucesso!");
+    } catch (error) {
+      toast.error("Erro ao salvar a ordem.");
+      console.error(error);
+    } finally {
+      setIsSavingOrder(false);
+    }
+  };
+
   return (
     <>
       {!user ? (
@@ -216,7 +263,7 @@ function Admin() {
           <hr />
           <section className="technology-list">
             <h1>TECNOLOGIAS</h1>
-            {technologies.map((tech) => (
+            {technologies.map((tech, index) => (
               <div key={tech.id} className="technology-container">
                 <p>{tech.name}</p>
                 <div>
@@ -227,15 +274,36 @@ function Admin() {
                     Deletar
                   </button>
                 </div>
+                <div>
+                  <button
+                    onClick={() => moveTechnology(index, "up")}
+                    disabled={index === 0}
+                  >
+                    ↑
+                  </button>
+                  <button
+                    onClick={() => moveTechnology(index, "down")}
+                    disabled={index === technologies.length - 1}
+                  >
+                    ↓
+                  </button>
+                </div>
               </div>
             ))}
             <div className="add-button-container">
+              <Button
+                text={"Salvar Ordem"}
+                onClick={saveOrder}
+                disabled={isSavingOrder}
+              />
+
               <Button text={"ADICIONAR"} onClick={() => handleOpenTechForm()} />
               <TechnologyForm
                 isOpen={isTechnologyModalOpen}
                 onClose={() => setTechnologyModalOpen(false)}
                 onSuccess={fetchTechnologies}
                 technologyToEdit={editingTechnology}
+                techCount={technologies.length}
               />
             </div>
           </section>

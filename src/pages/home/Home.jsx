@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import emailjs from "@emailjs/browser";
 import Header from "../../components/header/Header";
 import Icon from "../../components/icon/Icon";
@@ -16,14 +16,16 @@ function Home() {
   useEffect(() => {
     const fetchTechnologies = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "technologies"));
+        const q = query(collection(db, "technologies"), orderBy("position"));
+        const querySnapshot = await getDocs(q);
+
         const technologiesData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setTechnologies(technologiesData);
       } catch (error) {
-        console.log("Erro as buscar tecnologias:", error);
+        console.log("Erro ao buscar tecnologias:", error);
         toast.error("Não foi possível carregar tecnologias.");
       }
     };
@@ -107,13 +109,18 @@ function Home() {
           ></div>
           <div className="right-container">
             <div className="text-container">
-              <h1 style={{ fontSize: "30px", marginTop: "2vh" }}><span style={{ textShadow: "0px 0px 4px var(--white)" }}>OLÁ</span>, ME CHAMO</h1>
+              <h1 style={{ fontSize: "30px", marginTop: "2vh" }}>
+                <span style={{ textShadow: "0px 0px 4px var(--white)" }}>
+                  OLÁ
+                </span>
+                , ME CHAMO
+              </h1>
               <h1 style={{ fontSize: "60px" }}>DANIEL SANTOS!</h1>
               <p>
-                Sou tecnólogo em Análise e Desenvolvimento de Sistemas, programador
-                Front-End e um grande entusiasta do desenvolvimento web, tendo
-                como objetivo a criação de soluções robustas, escalonáveis e com
-                foco na usabilidade do usuário.
+                Sou tecnólogo em Análise e Desenvolvimento de Sistemas,
+                programador Front-End e um grande entusiasta do desenvolvimento
+                web, tendo como objetivo a criação de soluções robustas,
+                escalonáveis e com foco na usabilidade do usuário.
               </p>
             </div>
             <div className="education-container">

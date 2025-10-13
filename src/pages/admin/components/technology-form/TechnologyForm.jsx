@@ -5,7 +5,13 @@ import { db, storage } from "../../../../firebase";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-function TechnologyForm({ isOpen, onClose, onSuccess, technologyToEdit }) {
+function TechnologyForm({
+  isOpen,
+  onClose,
+  onSuccess,
+  technologyToEdit,
+  techCount,
+}) {
   if (!isOpen) return null;
   const [name, setName] = useState("");
   const [iconFile, setIconFile] = useState(null);
@@ -49,6 +55,7 @@ function TechnologyForm({ isOpen, onClose, onSuccess, technologyToEdit }) {
         await updateDoc(docRef, data);
         toast.success("Tecnologia atualizada com sucesso!");
       } else {
+        const data = { name, iconUrl, position: techCount };
         await addDoc(collection(db, "technologies"), data);
         toast.success("Tecnologia adicionada com sucesso!");
       }

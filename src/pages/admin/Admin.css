@@ -48,6 +48,7 @@
 .technology-list .add-button-container {
   display: flex;
   justify-content: right;
+  gap: 2vw;
 }
 
 .admin button {
