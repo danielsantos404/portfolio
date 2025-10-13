@@ -53,7 +53,11 @@
   font-size: 70%;
 }
 
-.modal-overlay .modal-container .modal-content .modal-text-container .modal-project-title {
+.modal-overlay
+  .modal-container
+  .modal-content
+  .modal-text-container
+  .modal-project-title {
   text-decoration: underline;
   padding-bottom: 5%;
 }
@@ -101,9 +105,12 @@
 }
 
 .modal-overlay .modal-container .modal-content .modal-icon-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 0 25% 5%;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26px, 1fr)); */
+
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30% 5%;
   justify-content: center;
   row-gap: 1vh;
   column-gap: 1vh;
@@ -140,6 +147,13 @@
   .modal-container
   .modal-content
   .modal-btt-container
-  #github-modal-button, #deploy-modal-button {
+  #github-modal-button,
+#deploy-modal-button {
   transform: none;
+}
+
+@media (max-width: 520px) {
+  .modal-overlay .modal-container .modal-content .modal-icon-container {
+    padding: 0 15% 5%;
+  }
 }
