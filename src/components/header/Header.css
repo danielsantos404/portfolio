@@ -29,10 +29,15 @@
   text-decoration: none;
 }
 
+/* EFEITO PARA O TOQUE */
+.header-nav li:active {
+  text-shadow: 0px 0px 10px red; /* Mude para VERMELHO */
+}
+
+/* EFEITO DE HOVER (apenas para desktop) */
 @media (hover: hover) {
   .header-nav li:hover {
-    background-color: var(--sec-gray);
-    text-shadow: 0px 0px 10px var(--white);
+    text-shadow: 0px 0px 10px blue; /* Mude para AZUL */
   }
 }
 
