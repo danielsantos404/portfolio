@@ -1,9 +1,17 @@
 import "./Modal.css";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import Button from "../button/Button";
 import Icon from "../icon/Icon";
 
 function Modal({ onClose, project }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
   const openSecureLink = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
