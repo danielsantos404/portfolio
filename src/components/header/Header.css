@@ -14,23 +14,26 @@
   width: 100%;
   justify-content: center;
   list-style: none;
-  gap: 10%;
 }
 
-.header-nav li, .nav-link {
+.header-nav li,
+.nav-link {
   width: 100%;
   text-align: center;
   cursor: pointer;
-  padding: 1.5%;
+  height: 6vh;
+  align-content: center;
   border-radius: 0 0 16px 16px;
   transition: 0.2s background;
   color: var(--white);
   text-decoration: none;
 }
 
-.header-nav li:hover {
-  background-color: var(--sec-gray);
-  text-shadow: 0px 0px 10px var(--white);
+@media (hover: hover) {
+  .header-nav li:hover {
+    background-color: var(--sec-gray);
+    text-shadow: 0px 0px 10px var(--white);
+  }
 }
 
 @media (max-width: 464px) {
@@ -46,14 +49,8 @@
   .header-nav ul {
     display: flex;
     justify-content: space-between;
-    margin: auto;
-    padding: 5% 0;
-    width: 100%;
-    gap: 0;
-  }
-
-  .header-nav li {
     padding: 0;
     margin: auto;
+    gap: 0;
   }
 }
